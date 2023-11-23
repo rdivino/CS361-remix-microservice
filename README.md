@@ -90,3 +90,6 @@ def clear(data):
         json.dump(data, json_file, indent=4)  
     
 ```
+
+![umldiagram_remix](https://github.com/rdivino/CS361-remix-microservice/assets/61130026/c73a7f4a-0aaf-4a16-83af-af0a04371d2f)
+

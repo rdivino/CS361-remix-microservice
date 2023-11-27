@@ -58,6 +58,13 @@ from pydub import AudioSegment
 import json
 import time
 
+def clear(data):
+    with open('remix-choice.json', 'w') as json_file:
+        data['choice'] = ""
+        data['track1'] = ""
+        data['track2'] = "" 
+        json.dump(data, json_file, indent=4)
+
 audio1 = AudioSegment.from_file("StarWars3.wav", format="wav")
 audio2 = AudioSegment.from_file("CantinaBand3.wav", format="wav")
 
@@ -78,16 +85,10 @@ if data['choice'] == "mix":
     else: 
         print("Error.\n")
         clear(data)
-else
+else:
   print("Invalid choice.\n")
   clear(data)
 
-def clear(data):
-    with open('remix-choice.json', 'w') as json_file:
-        data['choice'] = ""
-        data['track1'] = ""
-        data['track2'] = "" 
-        json.dump(data, json_file, indent=4)  
     
 ```
 

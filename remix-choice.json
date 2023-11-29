@@ -1,0 +1,10 @@
+{
+    "command": "mix",
+    "tracks": [
+        "cantina3.wav",
+        "taunt.wav",
+        "starwars3.wav"
+    ],
+    "output": "output.wav",
+    "volume_scale": 1
+}

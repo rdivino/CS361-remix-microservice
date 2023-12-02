@@ -60,34 +60,34 @@ def save_to_json(remix_data):
 
 print("Starting Audio Remix microservice...")
 time.sleep(1)
-
-try:
-    with open('remix-choice.json', 'r') as file:
-        data = json.load(file)
-except (FileNotFoundError, json.JSONDecodeError):
-    print("File not found... Creating file...")
-    time.sleep(2)
-    data = {
-        "command": "",
-        "tracks": [],
-        "output": "",
-        "volume_scale": 1,
-    }
-    save_to_json(data)
-
-print("Waiting for request...")
-
 while True:
-    current_data = get_json_data()
-    if current_data.get('command', '') != "":
-        break
-    time.sleep(1)
-    
-match current_data['command']:
-    case "mix":
-        mix_audio(current_data)
-    case "volume":
-        adjust_volume(current_data)
-    case _:
-        print("Invalid command.\n")
-        clear(current_data)
+    try:
+        with open('remix-choice.json', 'r') as file:
+            data = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("File not found... Creating file...")
+        time.sleep(2)
+        data = {
+            "command": "",
+            "tracks": [],
+            "output": "",
+            "volume_scale": 1,
+        }
+        save_to_json(data)
+
+    print("Waiting for request...")
+
+    while True:
+        current_data = get_json_data()
+        if current_data.get('command', '') != "":
+            break
+        time.sleep(1)
+        
+    match current_data['command']:
+        case "mix":
+            mix_audio(current_data)
+        case "volume":
+            adjust_volume(current_data)
+        case _:
+            print("Invalid command.\n")
+            clear(current_data)
